@@ -142,8 +142,8 @@ export default function InvoicesPage() {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">Factures</h1>
-            <p className="text-gray-500 mt-1">{stats.paid} payées · {stats.unpaid} impayées</p>
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Factures</h1>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">{stats.paid} payées · {stats.unpaid} impayées</p>
           </div>
           <Link href="/invoices/new">
             <Button icon={<Plus className="w-5 h-5" />}>Nouvelle facture</Button>
@@ -156,8 +156,8 @@ export default function InvoicesPage() {
               <Receipt className="w-6 h-6 text-emerald-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Total encaissé</p>
-              <p className="text-xl font-bold text-gray-800">{formatCurrency(stats.totalAmount)}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Total encaissé</p>
+              <p className="text-xl font-bold text-gray-800 dark:text-white">{formatCurrency(stats.totalAmount)}</p>
             </div>
           </Card>
           <Card variant="default" padding="md" className="flex items-center gap-4">
@@ -165,8 +165,8 @@ export default function InvoicesPage() {
               <span className="text-xl font-bold text-blue-600">{stats.paid}</span>
             </div>
             <div>
-              <p className="text-sm text-gray-500">Factures payées</p>
-              <p className="text-lg font-semibold text-gray-800">ce mois</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Factures payées</p>
+              <p className="text-lg font-semibold text-gray-800 dark:text-white">ce mois</p>
             </div>
           </Card>
           <Card variant="default" padding="md" className="flex items-center gap-4">
@@ -174,8 +174,8 @@ export default function InvoicesPage() {
               <span className="text-xl font-bold text-red-600">{stats.unpaid}</span>
             </div>
             <div>
-              <p className="text-sm text-gray-500">Impayées</p>
-              <p className="text-lg font-semibold text-gray-800">à relancer</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Impayées</p>
+              <p className="text-lg font-semibold text-gray-800 dark:text-white">à relancer</p>
             </div>
           </Card>
         </div>
@@ -191,50 +191,50 @@ export default function InvoicesPage() {
 
         {filteredInvoices.length === 0 ? (
           <Card variant="default" padding="lg" className="text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <Receipt className="w-8 h-8 text-gray-400" />
             </div>
-            <h3 className="font-semibold text-gray-800 mb-2">Aucune facture trouvée</h3>
-            <p className="text-gray-500 mb-4">Créez votre première facture</p>
+            <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Aucune facture trouvée</h3>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">Créez votre première facture</p>
             <Link href="/invoices/new"><Button icon={<Plus className="w-5 h-5" />}>Créer une facture</Button></Link>
           </Card>
         ) : (
           <Card variant="default" padding="none">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-100">
+                <thead className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Numéro</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Client</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Date</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Échéance</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Statut</th>
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600">Montant TTC</th>
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600">Actions</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Numéro</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Client</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Date</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Échéance</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Statut</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600 dark:text-gray-300">Montant TTC</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600 dark:text-gray-300">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {filteredInvoices.map((invoice) => (
-                    <tr key={invoice.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4"><span className="font-semibold text-gray-800">{invoice.number}</span></td>
-                      <td className="px-6 py-4 text-gray-600">{invoice.client?.name || '-'}</td>
-                      <td className="px-6 py-4 text-gray-500">{formatDate(invoice.issue_date)}</td>
-                      <td className="px-6 py-4 text-gray-500">{invoice.due_date ? formatDate(invoice.due_date) : '-'}</td>
+                    <tr key={invoice.id} className="hover:bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-800/50 transition-colors">
+                      <td className="px-6 py-4"><span className="font-semibold text-gray-800 dark:text-white">{invoice.number}</span></td>
+                      <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{invoice.client?.name || '-'}</td>
+                      <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{formatDate(invoice.issue_date)}</td>
+                      <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{invoice.due_date ? formatDate(invoice.due_date) : '-'}</td>
                       <td className="px-6 py-4">
                         <button onClick={() => openStatusModal(invoice)}>
                           <Badge status={invoice.status} size="sm" />
                         </button>
                       </td>
-                      <td className="px-6 py-4 text-right font-bold text-gray-800">{formatCurrency(invoice.total_ttc)}</td>
+                      <td className="px-6 py-4 text-right font-bold text-gray-800 dark:text-white">{formatCurrency(invoice.total_ttc)}</td>
                       <td className="px-6 py-4">
                         <div className="flex items-center justify-end gap-1">
-                          <button onClick={() => router.push(`/invoices/${invoice.id}/edit`)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-blue-600" title="Modifier">
+                          <button onClick={() => router.push(`/invoices/${invoice.id}/edit`)} className="p-2 rounded-lg hover:bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-blue-600" title="Modifier">
                             <Pencil className="w-4 h-4" />
                           </button>
-                          <button onClick={() => handleDownloadPDF(invoice)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-emerald-600" title="Télécharger PDF">
+                          <button onClick={() => handleDownloadPDF(invoice)} className="p-2 rounded-lg hover:bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-emerald-600" title="Télécharger PDF">
                             <Download className="w-4 h-4" />
                           </button>
-                          <button onClick={() => handleDelete(invoice.id)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-red-600" title="Supprimer">
+                          <button onClick={() => handleDelete(invoice.id)} className="p-2 rounded-lg hover:bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-red-600" title="Supprimer">
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
@@ -250,20 +250,20 @@ export default function InvoicesPage() {
         {/* Modal changement de statut */}
         <Modal isOpen={showStatusModal} onClose={() => setShowStatusModal(false)} title="Changer le statut" size="sm">
           <div className="space-y-3">
-            <p className="text-gray-600 mb-4">Facture : <strong>{selectedInvoice?.number}</strong></p>
-            <button onClick={() => handleStatusChange('draft')} className="w-full p-3 rounded-xl border-2 border-gray-200 hover:border-gray-400 flex items-center gap-3 transition-colors">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">Facture : <strong>{selectedInvoice?.number}</strong></p>
+            <button onClick={() => handleStatusChange('draft')} className="w-full p-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-gray-400 flex items-center gap-3 transition-colors">
               <div className="w-3 h-3 rounded-full bg-gray-400" />
               <span>Brouillon</span>
             </button>
-            <button onClick={() => handleStatusChange('sent')} className="w-full p-3 rounded-xl border-2 border-gray-200 hover:border-orange-400 flex items-center gap-3 transition-colors">
+            <button onClick={() => handleStatusChange('sent')} className="w-full p-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-orange-400 flex items-center gap-3 transition-colors">
               <Send className="w-4 h-4 text-orange-500" />
               <span>Envoyée</span>
             </button>
-            <button onClick={() => handleStatusChange('paid')} className="w-full p-3 rounded-xl border-2 border-gray-200 hover:border-emerald-400 flex items-center gap-3 transition-colors">
+            <button onClick={() => handleStatusChange('paid')} className="w-full p-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-emerald-400 flex items-center gap-3 transition-colors">
               <CheckCircle className="w-4 h-4 text-emerald-500" />
               <span>Payée</span>
             </button>
-            <button onClick={() => handleStatusChange('unpaid')} className="w-full p-3 rounded-xl border-2 border-gray-200 hover:border-red-400 flex items-center gap-3 transition-colors">
+            <button onClick={() => handleStatusChange('unpaid')} className="w-full p-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-red-400 flex items-center gap-3 transition-colors">
               <AlertTriangle className="w-4 h-4 text-red-500" />
               <span>Impayée</span>
             </button>

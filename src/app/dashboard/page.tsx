@@ -112,10 +112,10 @@ export default function DashboardPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
               {greeting}{user?.display_name || user?.company_name ? `, ${user?.display_name || user?.company_name}` : ''} 👋
             </h1>
-            <p className="text-gray-500 mt-1">Voici un aperçu de votre activité</p>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">Voici un aperçu de votre activité</p>
           </div>
           <div className="flex gap-3">
             <Link href="/quotes/new">
@@ -141,12 +141,12 @@ export default function DashboardPage() {
           <Card variant="default" padding="lg" className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-lg font-bold text-gray-800">Évolution du CA</h2>
-                <p className="text-sm text-gray-500">6 derniers mois</p>
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white">Évolution du CA</h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400">6 derniers mois</p>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold text-gray-800">{formatCurrency(totalRevenue)}</p>
-                <p className="text-sm text-gray-500">CA total</p>
+                <p className="text-2xl font-bold text-gray-800 dark:text-white">{formatCurrency(totalRevenue)}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">CA total</p>
               </div>
             </div>
             
@@ -155,7 +155,7 @@ export default function DashboardPage() {
               {monthlyData.map((data, index) => (
                 <div key={index} className="flex-1 flex flex-col items-center gap-2">
                   <div className="w-full flex flex-col items-center">
-                    <span className="text-xs font-medium text-gray-600 mb-1">
+                    <span className="text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">
                       {data.revenue > 0 ? formatCurrency(data.revenue) : ''}
                     </span>
                     <div 
@@ -166,7 +166,7 @@ export default function DashboardPage() {
                       }}
                     />
                   </div>
-                  <span className="text-xs text-gray-500 font-medium">{data.month}</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">{data.month}</span>
                 </div>
               ))}
             </div>
@@ -174,61 +174,61 @@ export default function DashboardPage() {
 
           {/* Stats avancées */}
           <Card variant="default" padding="lg">
-            <h2 className="text-lg font-bold text-gray-800 mb-6">Performances</h2>
+            <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-6">Performances</h2>
             
             <div className="space-y-6">
               {/* Taux de conversion */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-600">Taux de conversion</span>
-                  <span className="text-sm font-bold text-gray-800">{conversionRate}%</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">Taux de conversion</span>
+                  <span className="text-sm font-bold text-gray-800 dark:text-white">{conversionRate}%</span>
                 </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all"
                     style={{ width: `${conversionRate}%` }}
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-1">{acceptedQuotes} devis acceptés sur {totalQuotes}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{acceptedQuotes} devis acceptés sur {totalQuotes}</p>
               </div>
 
               {/* Taux de paiement */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-600">Taux de paiement</span>
-                  <span className="text-sm font-bold text-gray-800">{paymentRate}%</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">Taux de paiement</span>
+                  <span className="text-sm font-bold text-gray-800 dark:text-white">{paymentRate}%</span>
                 </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full transition-all"
                     style={{ width: `${paymentRate}%` }}
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-1">{paidInvoices} factures payées sur {totalInvoices}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{paidInvoices} factures payées sur {totalInvoices}</p>
               </div>
 
               {/* Clients */}
-              <div className="pt-4 border-t border-gray-100">
+              <div className="pt-4 border-t border-gray-100 dark:border-gray-700">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
                     <Users className="w-5 h-5 text-purple-600" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-gray-800">{clients.length}</p>
-                    <p className="text-sm text-gray-500">Clients</p>
+                    <p className="text-2xl font-bold text-gray-800 dark:text-white">{clients.length}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Clients</p>
                   </div>
                 </div>
               </div>
 
               {/* Documents */}
-              <div className="pt-4 border-t border-gray-100">
+              <div className="pt-4 border-t border-gray-100 dark:border-gray-700">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
                     <FileText className="w-5 h-5 text-amber-600" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-gray-800">{allDocuments.length}</p>
-                    <p className="text-sm text-gray-500">Documents créés</p>
+                    <p className="text-2xl font-bold text-gray-800 dark:text-white">{allDocuments.length}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Documents créés</p>
                   </div>
                 </div>
               </div>
@@ -245,8 +245,8 @@ export default function DashboardPage() {
                   <Plus className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-800 text-lg">Créer un devis</h3>
-                  <p className="text-gray-500 text-sm">En moins de 5 minutes</p>
+                  <h3 className="font-bold text-gray-800 dark:text-white text-lg">Créer un devis</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">En moins de 5 minutes</p>
                 </div>
               </div>
               <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
@@ -260,8 +260,8 @@ export default function DashboardPage() {
                   <Receipt className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-800 text-lg">Créer une facture</h3>
-                  <p className="text-gray-500 text-sm">Depuis un devis ou de zéro</p>
+                  <h3 className="font-bold text-gray-800 dark:text-white text-lg">Créer une facture</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm">Depuis un devis ou de zéro</p>
                 </div>
               </div>
               <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all" />
@@ -271,9 +271,9 @@ export default function DashboardPage() {
 
         {/* Documents récents */}
         <Card variant="default" padding="none">
-          <div className="p-6 border-b border-gray-100">
+          <div className="p-6 border-b border-gray-100 dark:border-gray-700">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-gray-800">Documents récents</h2>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white">Documents récents</h2>
               <Link href="/quotes" className="text-blue-500 hover:text-blue-600 font-medium text-sm flex items-center gap-1">
                 Voir tout <ArrowRight className="w-4 h-4" />
               </Link>
@@ -283,7 +283,7 @@ export default function DashboardPage() {
           {recentDocuments.length === 0 ? (
             <div className="p-12 text-center">
               <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-500">Aucun document pour l'instant</p>
+              <p className="text-gray-500 dark:text-gray-400">Aucun document pour l'instant</p>
               <p className="text-gray-400 text-sm mt-1">Créez votre premier devis ou facture</p>
             </div>
           ) : (
@@ -292,7 +292,7 @@ export default function DashboardPage() {
                 <Link 
                   key={doc.id} 
                   href={`/${doc.type === 'quote' ? 'quotes' : 'invoices'}/${doc.id}/edit`}
-                  className="block p-4 sm:p-6 hover:bg-gray-50 transition-colors"
+                  className="block p-4 sm:p-6 hover:bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-800 transition-colors"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-4 min-w-0">
@@ -301,14 +301,14 @@ export default function DashboardPage() {
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="font-semibold text-gray-800">{doc.number}</span>
+                          <span className="font-semibold text-gray-800 dark:text-white">{doc.number}</span>
                           <Badge status={doc.status} size="sm" />
                         </div>
-                        <p className="text-sm text-gray-500 truncate">{doc.client?.name || 'Client'}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{doc.client?.name || 'Client'}</p>
                       </div>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="font-bold text-gray-800">{formatCurrency(doc.total_ttc)}</p>
+                      <p className="font-bold text-gray-800 dark:text-white">{formatCurrency(doc.total_ttc)}</p>
                       <p className="text-sm text-gray-400">{formatDate(doc.issue_date)}</p>
                     </div>
                   </div>

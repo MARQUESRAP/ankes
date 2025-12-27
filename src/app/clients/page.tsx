@@ -90,16 +90,16 @@ export default function ClientsPage() {
     <AppLayout>
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div><h1 className="text-3xl font-bold text-gray-800">Clients</h1><p className="text-gray-500 mt-1">{clients.length} client{clients.length > 1 ? 's' : ''}</p></div>
+          <div><h1 className="text-3xl font-bold text-gray-800 dark:text-white">Clients</h1><p className="text-gray-500 dark:text-gray-400 mt-1">{clients.length} client{clients.length > 1 ? 's' : ''}</p></div>
           <Button onClick={openCreateModal} icon={<Plus className="w-5 h-5" />}>Nouveau client</Button>
         </div>
         <div className="max-w-md"><Input placeholder="Rechercher un client..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} icon={<Search className="w-5 h-5" />} /></div>
         
         {filteredClients.length === 0 ? (
           <Card variant="default" padding="lg" className="text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4"><User className="w-8 h-8 text-gray-400" /></div>
-            <h3 className="font-semibold text-gray-800 mb-2">Aucun client trouvé</h3>
-            <p className="text-gray-500 mb-4">{searchQuery ? 'Essayez une autre recherche' : 'Commencez par ajouter votre premier client'}</p>
+            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4"><User className="w-8 h-8 text-gray-400" /></div>
+            <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Aucun client trouvé</h3>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">{searchQuery ? 'Essayez une autre recherche' : 'Commencez par ajouter votre premier client'}</p>
             {!searchQuery && <Button onClick={openCreateModal} icon={<Plus className="w-5 h-5" />}>Ajouter un client</Button>}
           </Card>
         ) : (
@@ -109,17 +109,17 @@ export default function ClientsPage() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">{client.name.charAt(0).toUpperCase()}</div>
-                    <h3 className="font-semibold text-gray-800">{client.name}</h3>
+                    <h3 className="font-semibold text-gray-800 dark:text-white">{client.name}</h3>
                   </div>
                   <div className="flex gap-1">
-                    <button onClick={() => openEditModal(client)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-blue-600"><Pencil className="w-4 h-4" /></button>
-                    <button onClick={() => handleDelete(client.id)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
+                    <button onClick={() => openEditModal(client)} className="p-2 rounded-lg hover:bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-blue-600"><Pencil className="w-4 h-4" /></button>
+                    <button onClick={() => handleDelete(client.id)} className="p-2 rounded-lg hover:bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 </div>
                 <div className="space-y-2 text-sm">
-                  {client.email && <div className="flex items-center gap-2 text-gray-600"><Mail className="w-4 h-4 text-gray-400" />{client.email}</div>}
-                  {client.phone && <div className="flex items-center gap-2 text-gray-600"><Phone className="w-4 h-4 text-gray-400" />{client.phone}</div>}
-                  {client.address && <div className="flex items-center gap-2 text-gray-600"><MapPin className="w-4 h-4 text-gray-400" />{client.address}, {client.postal_code} {client.city}</div>}
+                  {client.email && <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300"><Mail className="w-4 h-4 text-gray-400" />{client.email}</div>}
+                  {client.phone && <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300"><Phone className="w-4 h-4 text-gray-400" />{client.phone}</div>}
+                  {client.address && <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300"><MapPin className="w-4 h-4 text-gray-400" />{client.address}, {client.postal_code} {client.city}</div>}
                 </div>
               </Card>
             ))}

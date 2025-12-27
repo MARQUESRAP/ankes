@@ -46,7 +46,7 @@ export default function Sidebar() {
           <Zap className="w-7 h-7 text-white" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Ankès</h1>
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Ankès</h1>
           <p className="text-xs text-gray-400">Devis & Factures</p>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function Sidebar() {
                 font-medium transition-all duration-200
                 ${isActive 
                   ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' 
-                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
+                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white'
                 }
               `}
             >
@@ -77,12 +77,12 @@ export default function Sidebar() {
       </nav>
 
       {/* Logout */}
-      <div className="p-3 border-t border-gray-100">
+      <div className="p-3 border-t border-gray-100 dark:border-gray-700">
         <button
           onClick={handleLogout}
           className="flex items-center gap-3 w-full px-4 py-3.5 rounded-xl
-            text-gray-600 font-medium
-            hover:bg-red-50 hover:text-red-600
+            text-gray-600 dark:text-gray-300 font-medium
+            hover:bg-red-50 dark:hover:bg-red-900/30 hover:text-red-600 dark:hover:text-red-400
             transition-all duration-200"
         >
           <LogOut className="w-5 h-5" />
@@ -97,9 +97,9 @@ export default function Sidebar() {
       {/* Mobile menu button */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="lg:hidden fixed top-4 left-4 z-40 p-3 bg-white rounded-xl shadow-lg"
+        className="lg:hidden fixed top-4 left-4 z-40 p-3 bg-white dark:bg-gray-800 rounded-xl shadow-lg"
       >
-        <Menu className="w-6 h-6 text-gray-600" />
+        <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
       </button>
 
       {/* Mobile sidebar */}
@@ -109,12 +109,12 @@ export default function Sidebar() {
             className="absolute inset-0 bg-gray-900/50 backdrop-blur-sm"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="absolute left-0 top-0 bottom-0 w-72 bg-white shadow-2xl flex flex-col animate-slideIn">
+          <div className="absolute left-0 top-0 bottom-0 w-72 bg-white dark:bg-gray-900 shadow-2xl flex flex-col animate-slideIn">
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100"
+              className="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
             >
-              <X className="w-5 h-5 text-gray-500" />
+              <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
             </button>
             <NavContent />
           </div>
@@ -122,7 +122,7 @@ export default function Sidebar() {
       )}
 
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex lg:flex-col lg:w-72 lg:fixed lg:inset-y-0 bg-white border-r border-gray-100">
+      <aside className="hidden lg:flex lg:flex-col lg:w-72 lg:fixed lg:inset-y-0 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800">
         <NavContent />
       </aside>
     </>

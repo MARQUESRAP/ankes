@@ -59,8 +59,8 @@ export default function StatCard({
     <Card variant="default" padding="lg" hover>
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
-          <p className="text-sm font-medium text-gray-500 mb-1">{title}</p>
-          <p className={`${textSizeClass} font-bold text-gray-800`}>{value}</p>
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">{title}</p>
+          <p className={`${textSizeClass} font-bold text-gray-800 dark:text-white`}>{value}</p>
           {trend && (
             <p className={`text-sm mt-2 font-medium ${trend.isPositive ? 'text-emerald-600' : 'text-red-600'}`}>
               {trend.isPositive ? '↑' : '↓'} {Math.abs(trend.value)}%

@@ -51,18 +51,18 @@ export default function CreateClientModal({ isOpen, onClose, onClientCreated }: 
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       
-      <div className="relative w-full max-w-lg mx-4 bg-white rounded-2xl shadow-2xl animate-scaleIn">
-        <div className="flex items-center justify-between p-6 border-b border-gray-100">
+      <div className="relative w-full max-w-lg mx-4 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl animate-scaleIn">
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
               <UserPlus className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-800">Nouveau client</h2>
-              <p className="text-sm text-gray-500">Ajoutez rapidement un client</p>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white">Nouveau client</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Ajoutez rapidement un client</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-600 dark:text-gray-300">
             <X className="w-5 h-5" />
           </button>
         </div>

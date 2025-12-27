@@ -60,18 +60,18 @@ export default function Modal({
       <div 
         className={`
           relative w-full ${sizes[size]}
-          bg-white rounded-3xl shadow-2xl
+          bg-white dark:bg-gray-800 rounded-3xl shadow-2xl
           animate-scaleIn
           max-h-[90vh] overflow-hidden flex flex-col
         `}
       >
         {/* Header */}
         {title && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-            <h2 className="text-xl font-bold text-gray-800">{title}</h2>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-700">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-white">{title}</h2>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>

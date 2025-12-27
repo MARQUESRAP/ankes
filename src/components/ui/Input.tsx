@@ -14,13 +14,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             {label}
           </label>
         )}
         <div className="relative">
           {icon && (
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
               {icon}
             </div>
           )}
@@ -29,15 +29,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             className={`
               w-full px-4 py-3.5 
               ${icon ? 'pl-12' : ''}
-              bg-white 
-              border-2 border-gray-200 
+              bg-white dark:bg-gray-800
+              border-2 border-gray-200 dark:border-gray-600
               rounded-xl
-              text-gray-800 
-              placeholder:text-gray-400
+              text-gray-800 dark:text-gray-100
+              placeholder:text-gray-400 dark:placeholder:text-gray-500
               transition-all duration-200
               focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10
-              hover:border-gray-300
-              disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed
+              hover:border-gray-300 dark:hover:border-gray-500
+              disabled:bg-gray-50 dark:disabled:bg-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed
               ${error ? 'border-red-400 focus:border-red-500 focus:ring-red-500/10' : ''}
               ${className}
             `}
@@ -45,7 +45,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           />
         </div>
         {hint && !error && (
-          <p className="mt-2 text-sm text-gray-500">{hint}</p>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{hint}</p>
         )}
         {error && (
           <p className="mt-2 text-sm text-red-500 flex items-center gap-1">

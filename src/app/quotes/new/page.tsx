@@ -232,23 +232,23 @@ export default function NewQuotePage() {
     <AppLayout>
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="flex items-center gap-4">
-          <button onClick={() => router.back()} className="p-2 rounded-xl hover:bg-gray-100 text-gray-400 hover:text-gray-600">
+          <button onClick={() => router.back()} className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 dark:bg-gray-700 text-gray-400 hover:text-gray-600 dark:text-gray-300">
             <ArrowLeft className="w-5 h-5" />
           </button>
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">Nouveau devis</h1>
-            <p className="text-gray-500 mt-1">{nextNumber}</p>
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Nouveau devis</h1>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">{nextNumber}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
             <Card variant="default" padding="lg">
-              <h2 className="text-lg font-bold text-gray-800 mb-4">Informations générales</h2>
+              <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Informations générales</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <label className="block text-sm font-medium text-gray-700">Client *</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Client *</label>
                     <button
                       type="button"
                       onClick={() => setShowCreateClient(true)}
@@ -268,13 +268,13 @@ export default function NewQuotePage() {
 
             <Card variant="default" padding="lg">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-bold text-gray-800">Prestations</h2>
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white">Prestations</h2>
                 <Button variant="secondary" size="sm" onClick={addLineItem} icon={<Plus className="w-4 h-4" />}>Ajouter</Button>
               </div>
 
               <div className="space-y-4">
                 {lineItems.map((item) => (
-                  <div key={item.id} className="p-4 bg-gray-50 rounded-xl space-y-4">
+                  <div key={item.id} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl space-y-4">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
                         <Input placeholder="Description de la prestation" value={item.description} onChange={(e) => updateLineItem(item.id, 'description', e.target.value)} />
@@ -290,8 +290,8 @@ export default function NewQuotePage() {
                       <Input label="Prix unitaire HT" type="number" min="0" step="0.01" value={item.unit_price} onChange={(e) => updateLineItem(item.id, 'unit_price', parseFloat(e.target.value) || 0)} />
                       <Select label="TVA" options={vatRates} value={item.vat_rate.toString()} onChange={(e) => updateLineItem(item.id, 'vat_rate', parseFloat(e.target.value))} />
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Total HT</label>
-                        <div className="px-4 py-3.5 bg-white border-2 border-gray-200 rounded-xl font-semibold text-gray-800">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Total HT</label>
+                        <div className="px-4 py-3.5 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl font-semibold text-gray-800 dark:text-white">
                           {formatCurrency(calculateLineTotal(item.quantity, item.unit_price))}
                         </div>
                       </div>
@@ -302,9 +302,9 @@ export default function NewQuotePage() {
             </Card>
 
             <Card variant="default" padding="lg">
-              <h2 className="text-lg font-bold text-gray-800 mb-4">Notes</h2>
+              <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Notes</h2>
               <textarea
-                className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none"
                 rows={3}
                 placeholder="Conditions particulières, informations complémentaires..."
                 value={notes}
@@ -315,19 +315,19 @@ export default function NewQuotePage() {
 
           <div className="space-y-6">
             <Card variant="elevated" padding="lg" className="sticky top-8">
-              <h2 className="text-lg font-bold text-gray-800 mb-4">Récapitulatif</h2>
+              <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Récapitulatif</h2>
               
               <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-600 dark:text-gray-300">
                   <span>Total HT</span>
                   <span className="font-medium">{formatCurrency(totalHT)}</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-600 dark:text-gray-300">
                   <span>TVA</span>
                   <span className="font-medium">{formatCurrency(totalVAT)}</span>
                 </div>
                 <div className="h-px bg-gray-200" />
-                <div className="flex justify-between text-xl font-bold text-gray-800">
+                <div className="flex justify-between text-xl font-bold text-gray-800 dark:text-white">
                   <span>Total TTC</span>
                   <span>{formatCurrency(totalTTC)}</span>
                 </div>

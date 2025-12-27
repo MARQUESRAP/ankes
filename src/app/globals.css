@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --color-background: #f8fafc;
     --color-foreground: #0f172a;
+  }
+  
+  .dark {
+    --color-background: #0f172a;
+    --color-foreground: #f8fafc;
   }
 }
 
@@ -93,6 +100,14 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }
 
 /* Selection color */

@@ -8,3 +8,4 @@ export { default as StatCard } from './StatCard';
 export { default as PDFPreviewModal } from './PDFPreviewModal';
 export { default as CreateClientModal } from './CreateClientModal';
 export { default as SendEmailModal } from './SendEmailModal';
+export { default as ThemeToggle } from './ThemeToggle';

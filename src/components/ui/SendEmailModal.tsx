@@ -143,18 +143,18 @@ export default function SendEmailModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       
-      <div className="relative w-full max-w-2xl mx-4 bg-white rounded-2xl shadow-2xl animate-scaleIn max-h-[90vh] overflow-hidden flex flex-col">
-        <div className="flex items-center justify-between p-6 border-b border-gray-100">
+      <div className="relative w-full max-w-2xl mx-4 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl animate-scaleIn max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-700">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
               <Mail className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-800">Envoyer le {docLabel}</h2>
-              <p className="text-sm text-gray-500">{documentNumber} • {clientName}</p>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white">Envoyer le {docLabel}</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{documentNumber} • {clientName}</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-600 dark:text-gray-300">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -177,11 +177,11 @@ export default function SendEmailModal({
           />
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Message
             </label>
             <textarea
-              className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none"
+              className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-white placeholder:text-gray-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none"
               rows={10}
               value={body}
               onChange={(e) => setBody(e.target.value)}
@@ -191,12 +191,12 @@ export default function SendEmailModal({
           {/* Pièce jointe */}
           <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-xl">
             <Paperclip className="w-5 h-5 text-gray-400" />
-            <span className="text-sm text-gray-600">{documentNumber}.pdf</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300">{documentNumber}.pdf</span>
             <span className="text-xs text-gray-400">({pdfBlob ? Math.round(pdfBlob.size / 1024) : 0} Ko)</span>
           </div>
         </div>
 
-        <div className="flex gap-3 p-6 border-t border-gray-100">
+        <div className="flex gap-3 p-6 border-t border-gray-100 dark:border-gray-700">
           <Button variant="secondary" className="flex-1" onClick={onClose}>
             Annuler
           </Button>

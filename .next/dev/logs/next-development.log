@@ -1,2 +1,76 @@
-[00:00:00.456] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:00.502] Server  LOG     ✓ Ready in 378ms
+[00:00:00.725] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:00.779] Server  LOG     ✓ Ready in 624ms
+[00:12:18.710] Server  LOG     ✓ Compiled in 54ms
+[00:12:58.575] Server  LOG     ✓ Compiled in 46ms
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:13:10.364] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. {}
+[00:14:49.625] Server  LOG     ✓ Compiled in 62ms
+[00:20:22.737] Server  LOG     ✓ Compiled in 52ms
+[00:20:52.585] Server  LOG     ✓ Compiled in 118ms
+[00:37:51.940] Server  LOG     ✓ Compiled in 69ms
+[00:40:54.950] Server  LOG     ✓ Compiled in 47ms
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[00:41:05.973] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/settings. Falling back to browser navigation. {}
+[07:08:28.836] Server  LOG     ✓ Compiled in 50ms

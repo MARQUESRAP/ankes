@@ -214,11 +214,11 @@ export default function HistoryPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white flex items-center gap-3">
               <History className="w-8 h-8 text-blue-500" />
               Historique
             </h1>
-            <p className="text-gray-500 mt-1">Consultez tous vos documents acceptés</p>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">Consultez tous vos documents acceptés</p>
           </div>
           <div className="flex gap-2">
             <Button
@@ -239,13 +239,13 @@ export default function HistoryPage() {
         </div>
 
         {/* Tabs Devis / Factures */}
-        <div className="flex gap-2 border-b border-gray-200">
+        <div className="flex gap-2 border-b border-gray-200 dark:border-gray-600">
           <button
             onClick={() => setActiveTab('quotes')}
             className={`flex items-center gap-2 px-4 py-3 font-medium transition-colors border-b-2 -mb-px ${
               activeTab === 'quotes'
                 ? 'text-blue-600 border-blue-600'
-                : 'text-gray-500 border-transparent hover:text-gray-700'
+                : 'text-gray-500 dark:text-gray-400 border-transparent hover:text-gray-700'
             }`}
           >
             <FileText className="w-5 h-5" />
@@ -256,7 +256,7 @@ export default function HistoryPage() {
             className={`flex items-center gap-2 px-4 py-3 font-medium transition-colors border-b-2 -mb-px ${
               activeTab === 'invoices'
                 ? 'text-emerald-600 border-emerald-600'
-                : 'text-gray-500 border-transparent hover:text-gray-700'
+                : 'text-gray-500 dark:text-gray-400 border-transparent hover:text-gray-700'
             }`}
           >
             <CreditCard className="w-5 h-5" />
@@ -272,8 +272,8 @@ export default function HistoryPage() {
                 <FileText className="w-5 h-5 text-blue-600" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Documents</p>
-                <p className="text-xl font-bold text-gray-800">{stats.count}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Documents</p>
+                <p className="text-xl font-bold text-gray-800 dark:text-white">{stats.count}</p>
               </div>
             </div>
           </Card>
@@ -283,8 +283,8 @@ export default function HistoryPage() {
                 <Euro className="w-5 h-5 text-emerald-600" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Total TTC</p>
-                <p className="text-xl font-bold text-gray-800">{formatCurrency(stats.totalAmount)}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Total TTC</p>
+                <p className="text-xl font-bold text-gray-800 dark:text-white">{formatCurrency(stats.totalAmount)}</p>
               </div>
             </div>
           </Card>
@@ -294,8 +294,8 @@ export default function HistoryPage() {
                 <Users className="w-5 h-5 text-purple-600" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Clients</p>
-                <p className="text-xl font-bold text-gray-800">{stats.uniqueClients}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Clients</p>
+                <p className="text-xl font-bold text-gray-800 dark:text-white">{stats.uniqueClients}</p>
               </div>
             </div>
           </Card>
@@ -305,8 +305,8 @@ export default function HistoryPage() {
                 <TrendingUp className="w-5 h-5 text-amber-600" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Moyenne</p>
-                <p className="text-xl font-bold text-gray-800">{formatCurrency(stats.avgAmount)}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Moyenne</p>
+                <p className="text-xl font-bold text-gray-800 dark:text-white">{formatCurrency(stats.avgAmount)}</p>
               </div>
             </div>
           </Card>
@@ -366,32 +366,32 @@ export default function HistoryPage() {
           <Card padding="none">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
+                <thead className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-600">
                   <tr>
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">Numéro</th>
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">Client</th>
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">Date</th>
-                    <th className="text-right px-6 py-4 text-sm font-semibold text-gray-600">Montant TTC</th>
-                    <th className="text-center px-6 py-4 text-sm font-semibold text-gray-600">Statut</th>
-                    <th className="text-center px-6 py-4 text-sm font-semibold text-gray-600">Actions</th>
+                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600 dark:text-gray-300">Numéro</th>
+                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600 dark:text-gray-300">Client</th>
+                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600 dark:text-gray-300">Date</th>
+                    <th className="text-right px-6 py-4 text-sm font-semibold text-gray-600 dark:text-gray-300">Montant TTC</th>
+                    <th className="text-center px-6 py-4 text-sm font-semibold text-gray-600 dark:text-gray-300">Statut</th>
+                    <th className="text-center px-6 py-4 text-sm font-semibold text-gray-600 dark:text-gray-300">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {filteredDocuments.length === 0 ? (
                     <tr>
-                      <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
+                      <td colSpan={6} className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
                         Aucun document trouvé
                       </td>
                     </tr>
                   ) : (
                     filteredDocuments.map((doc) => (
-                      <tr key={doc.id} className="hover:bg-gray-50 transition-colors">
+                      <tr key={doc.id} className="hover:bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-800/50 transition-colors">
                         <td className="px-6 py-4">
-                          <span className="font-semibold text-gray-800">{doc.number}</span>
+                          <span className="font-semibold text-gray-800 dark:text-white">{doc.number}</span>
                         </td>
-                        <td className="px-6 py-4 text-gray-600">{doc.client?.name}</td>
-                        <td className="px-6 py-4 text-gray-600">{formatDate(doc.issue_date)}</td>
-                        <td className="px-6 py-4 text-right font-semibold text-gray-800">
+                        <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{doc.client?.name}</td>
+                        <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{formatDate(doc.issue_date)}</td>
+                        <td className="px-6 py-4 text-right font-semibold text-gray-800 dark:text-white">
                           {formatCurrency(doc.total_ttc || 0)}
                         </td>
                         <td className="px-6 py-4 text-center">
@@ -423,18 +423,18 @@ export default function HistoryPage() {
             <div className="flex items-center justify-between mb-6">
               <button
                 onClick={() => setCalendarDate(new Date(calendarDate.getFullYear(), calendarDate.getMonth() - 1))}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-2 hover:bg-gray-100 dark:bg-gray-700 rounded-lg transition-colors"
               >
-                <ChevronLeft className="w-5 h-5 text-gray-600" />
+                <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
               </button>
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
                 {monthNames[calendarDate.getMonth()]} {calendarDate.getFullYear()}
               </h3>
               <button
                 onClick={() => setCalendarDate(new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1))}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-2 hover:bg-gray-100 dark:bg-gray-700 rounded-lg transition-colors"
               >
-                <ChevronRight className="w-5 h-5 text-gray-600" />
+                <ChevronRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
               </button>
             </div>
 
@@ -442,14 +442,14 @@ export default function HistoryPage() {
             <div className="grid grid-cols-7 gap-1">
               {/* En-têtes jours */}
               {['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'].map(day => (
-                <div key={day} className="text-center text-sm font-medium text-gray-500 py-2">
+                <div key={day} className="text-center text-sm font-medium text-gray-500 dark:text-gray-400 py-2">
                   {day}
                 </div>
               ))}
               
               {/* Cases vides avant le 1er */}
               {Array.from({ length: startingDay }).map((_, i) => (
-                <div key={`empty-${i}`} className="h-24 bg-gray-50 rounded-lg" />
+                <div key={`empty-${i}`} className="h-24 bg-gray-50 dark:bg-gray-800/50 rounded-lg" />
               ))}
               
               {/* Jours du mois */}
@@ -462,10 +462,10 @@ export default function HistoryPage() {
                   <div
                     key={day}
                     className={`h-24 p-2 rounded-lg border transition-colors ${
-                      isToday ? 'border-blue-500 bg-blue-50' : 'border-gray-100 hover:bg-gray-50'
+                      isToday ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30' : 'border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-800/50'
                     }`}
                   >
-                    <span className={`text-sm font-medium ${isToday ? 'text-blue-600' : 'text-gray-600'}`}>
+                    <span className={`text-sm font-medium ${isToday ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300'}`}>
                       {day}
                     </span>
                     <div className="mt-1 space-y-1 overflow-hidden">
@@ -475,15 +475,15 @@ export default function HistoryPage() {
                           onClick={() => router.push(`/${doc.type === 'quote' ? 'quotes' : 'invoices'}/${doc.id}`)}
                           className={`text-xs px-1 py-0.5 rounded truncate cursor-pointer ${
                             doc.type === 'quote' 
-                              ? 'bg-blue-100 text-blue-700' 
-                              : 'bg-emerald-100 text-emerald-700'
+                              ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300' 
+                              : 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300'
                           }`}
                         >
                           {doc.number}
                         </div>
                       ))}
                       {docsForDay.length > 2 && (
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
                           +{docsForDay.length - 2} autres
                         </div>
                       )}

@@ -135,8 +135,8 @@ export default function QuotesPage() {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">Devis</h1>
-            <p className="text-gray-500 mt-1">{quotes.length} devis au total</p>
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Devis</h1>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">{quotes.length} devis au total</p>
           </div>
           <Link href="/quotes/new">
             <Button icon={<Plus className="w-5 h-5" />}>Nouveau devis</Button>
@@ -154,48 +154,48 @@ export default function QuotesPage() {
 
         {filteredQuotes.length === 0 ? (
           <Card variant="default" padding="lg" className="text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="w-8 h-8 text-gray-400" />
             </div>
-            <h3 className="font-semibold text-gray-800 mb-2">Aucun devis trouvé</h3>
-            <p className="text-gray-500 mb-4">Créez votre premier devis en quelques clics</p>
+            <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Aucun devis trouvé</h3>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">Créez votre premier devis en quelques clics</p>
             <Link href="/quotes/new"><Button icon={<Plus className="w-5 h-5" />}>Créer un devis</Button></Link>
           </Card>
         ) : (
           <Card variant="default" padding="none">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-100">
+                <thead className="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Numéro</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Client</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Date</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Statut</th>
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600">Montant TTC</th>
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600">Actions</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Numéro</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Client</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Date</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 dark:text-gray-300">Statut</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600 dark:text-gray-300">Montant TTC</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600 dark:text-gray-300">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {filteredQuotes.map((quote) => (
-                    <tr key={quote.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4"><span className="font-semibold text-gray-800">{quote.number}</span></td>
-                      <td className="px-6 py-4 text-gray-600">{quote.client?.name || '-'}</td>
-                      <td className="px-6 py-4 text-gray-500">{formatDate(quote.issue_date)}</td>
+                    <tr key={quote.id} className="hover:bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-800/50 transition-colors">
+                      <td className="px-6 py-4"><span className="font-semibold text-gray-800 dark:text-white">{quote.number}</span></td>
+                      <td className="px-6 py-4 text-gray-600 dark:text-gray-300">{quote.client?.name || '-'}</td>
+                      <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{formatDate(quote.issue_date)}</td>
                       <td className="px-6 py-4">
                         <button onClick={() => openStatusModal(quote)}>
                           <Badge status={quote.status} size="sm" />
                         </button>
                       </td>
-                      <td className="px-6 py-4 text-right font-bold text-gray-800">{formatCurrency(quote.total_ttc)}</td>
+                      <td className="px-6 py-4 text-right font-bold text-gray-800 dark:text-white">{formatCurrency(quote.total_ttc)}</td>
                       <td className="px-6 py-4">
                         <div className="flex items-center justify-end gap-1">
-                          <button onClick={() => router.push(`/quotes/${quote.id}/edit`)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-blue-600" title="Modifier">
+                          <button onClick={() => router.push(`/quotes/${quote.id}/edit`)} className="p-2 rounded-lg hover:bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-blue-600" title="Modifier">
                             <Pencil className="w-4 h-4" />
                           </button>
-                          <button onClick={() => handleDownloadPDF(quote)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-emerald-600" title="Télécharger PDF">
+                          <button onClick={() => handleDownloadPDF(quote)} className="p-2 rounded-lg hover:bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-emerald-600" title="Télécharger PDF">
                             <Download className="w-4 h-4" />
                           </button>
-                          <button onClick={() => handleDelete(quote.id)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-red-600" title="Supprimer">
+                          <button onClick={() => handleDelete(quote.id)} className="p-2 rounded-lg hover:bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-red-600" title="Supprimer">
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
@@ -211,20 +211,20 @@ export default function QuotesPage() {
         {/* Modal changement de statut */}
         <Modal isOpen={showStatusModal} onClose={() => setShowStatusModal(false)} title="Changer le statut" size="sm">
           <div className="space-y-3">
-            <p className="text-gray-600 mb-4">Devis : <strong>{selectedQuote?.number}</strong></p>
-            <button onClick={() => handleStatusChange('draft')} className="w-full p-3 rounded-xl border-2 border-gray-200 hover:border-gray-400 flex items-center gap-3 transition-colors">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">Devis : <strong>{selectedQuote?.number}</strong></p>
+            <button onClick={() => handleStatusChange('draft')} className="w-full p-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-gray-400 flex items-center gap-3 transition-colors">
               <div className="w-3 h-3 rounded-full bg-gray-400" />
               <span>Brouillon</span>
             </button>
-            <button onClick={() => handleStatusChange('sent')} className="w-full p-3 rounded-xl border-2 border-gray-200 hover:border-orange-400 flex items-center gap-3 transition-colors">
+            <button onClick={() => handleStatusChange('sent')} className="w-full p-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-orange-400 flex items-center gap-3 transition-colors">
               <Send className="w-4 h-4 text-orange-500" />
               <span>Envoyé</span>
             </button>
-            <button onClick={() => handleStatusChange('accepted')} className="w-full p-3 rounded-xl border-2 border-gray-200 hover:border-emerald-400 flex items-center gap-3 transition-colors">
+            <button onClick={() => handleStatusChange('accepted')} className="w-full p-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-emerald-400 flex items-center gap-3 transition-colors">
               <CheckCircle className="w-4 h-4 text-emerald-500" />
               <span>Accepté</span>
             </button>
-            <button onClick={() => handleStatusChange('refused')} className="w-full p-3 rounded-xl border-2 border-gray-200 hover:border-red-400 flex items-center gap-3 transition-colors">
+            <button onClick={() => handleStatusChange('refused')} className="w-full p-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-red-400 flex items-center gap-3 transition-colors">
               <XCircle className="w-4 h-4 text-red-500" />
               <span>Refusé</span>
             </button>

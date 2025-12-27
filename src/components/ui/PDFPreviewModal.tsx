@@ -60,12 +60,12 @@ export default function PDFPreviewModal({ isOpen, onClose, document, fileName }:
       />
       
       {/* Modal */}
-      <div className="relative w-full max-w-5xl h-[90vh] mx-4 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-scaleIn">
+      <div className="relative w-full max-w-5xl h-[90vh] mx-4 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-scaleIn">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gray-50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-600 bg-gray-50">
           <div>
-            <h2 className="text-xl font-bold text-gray-800">Prévisualisation</h2>
-            <p className="text-sm text-gray-500">{fileName}.pdf</p>
+            <h2 className="text-xl font-bold text-gray-800 dark:text-white">Prévisualisation</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{fileName}.pdf</p>
           </div>
           <div className="flex items-center gap-3">
             <Button 
@@ -79,7 +79,7 @@ export default function PDFPreviewModal({ isOpen, onClose, document, fileName }:
             </Button>
             <button 
               onClick={onClose}
-              className="p-2 rounded-lg hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-200 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:text-gray-300 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -92,7 +92,7 @@ export default function PDFPreviewModal({ isOpen, onClose, document, fileName }:
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
                 <Loader2 className="w-10 h-10 animate-spin text-blue-500 mx-auto mb-4" />
-                <p className="text-gray-600">Génération du PDF...</p>
+                <p className="text-gray-600 dark:text-gray-300">Génération du PDF...</p>
               </div>
             </div>
           ) : pdfUrl ? (
@@ -103,7 +103,7 @@ export default function PDFPreviewModal({ isOpen, onClose, document, fileName }:
             />
           ) : (
             <div className="flex items-center justify-center h-full">
-              <p className="text-gray-500">Impossible de générer la prévisualisation</p>
+              <p className="text-gray-500 dark:text-gray-400">Impossible de générer la prévisualisation</p>
             </div>
           )}
         </div>

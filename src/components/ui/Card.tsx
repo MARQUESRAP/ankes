@@ -18,9 +18,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     ...props 
   }, ref) => {
     const variants = {
-      default: 'bg-white shadow-sm border border-gray-100',
-      elevated: 'bg-white shadow-xl shadow-gray-200/50',
-      outlined: 'bg-white border-2 border-gray-200',
+      default: 'bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700',
+      elevated: 'bg-white dark:bg-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-gray-900/50',
+      outlined: 'bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700',
     };
 
     const paddings = {
@@ -31,7 +31,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     };
 
     const hoverStyles = hover 
-      ? 'transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 hover:-translate-y-1 cursor-pointer' 
+      ? 'transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50 hover:-translate-y-1 cursor-pointer' 
       : '';
 
     return (

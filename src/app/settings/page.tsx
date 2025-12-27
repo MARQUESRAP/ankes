@@ -1,18 +1,20 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Building2, CreditCard, FileText, Save, Upload, Loader2, Check, Camera, Mail } from 'lucide-react';
+import { Building2, CreditCard, FileText, Save, Upload, Loader2, Check, Camera, Mail, Palette, Sun, Moon, Monitor } from 'lucide-react';
 import AppLayout from '@/components/layout/AppLayout';
 import { Button, Card, Input, Select } from '@/components/ui';
 import { userService } from '@/services/user';
 import { emailService } from '@/services/email';
 import { User } from '@/types';
+import { applyTheme, getSavedThemeMode, ThemeMode } from '@/components/ui/ThemeToggle';
 
 const tabs = [
   { id: 'company', label: 'Entreprise', icon: Building2 },
   { id: 'billing', label: 'Facturation', icon: CreditCard },
   { id: 'legal', label: 'Mentions légales', icon: FileText },
   { id: 'emails', label: 'Templates emails', icon: Mail },
+  { id: 'appearance', label: 'Apparence', icon: Palette },
 ];
 
 const vatRateOptions = [
@@ -27,6 +29,7 @@ export default function SettingsPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [isUploadingLogo, setIsUploadingLogo] = useState(false);
+  const [themeMode, setThemeMode] = useState<ThemeMode>('light');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const defaultQuoteTemplate = emailService.getDefaultQuoteTemplate();
@@ -50,6 +53,20 @@ export default function SettingsPage() {
     email_invoice_subject: defaultInvoiceTemplate.subject,
     email_invoice_body: defaultInvoiceTemplate.body,
   });
+
+  // Charger le thème au montage
+  useEffect(() => {
+    const savedMode = getSavedThemeMode();
+    setThemeMode(savedMode);
+  }, []);
+
+  // Fonction pour changer le thème
+  const handleThemeChange = (mode: ThemeMode) => {
+    setThemeMode(mode);
+    localStorage.setItem('themeMode', mode);
+    applyTheme(mode);
+    window.dispatchEvent(new Event('themeChange'));
+  };
 
   useEffect(() => {
     loadProfile();
@@ -142,12 +159,12 @@ export default function SettingsPage() {
     <AppLayout>
       <div className="max-w-4xl mx-auto space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Paramètres</h1>
-          <p className="text-gray-500 mt-1">Configurez votre compte et vos préférences</p>
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Paramètres</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Configurez votre compte et vos préférences</p>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 border-b border-gray-200">
+        <div className="flex gap-2 border-b border-gray-200 dark:border-gray-600">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -155,7 +172,7 @@ export default function SettingsPage() {
               className={`flex items-center gap-2 px-4 py-3 font-medium transition-all border-b-2 -mb-px ${
                 activeTab === tab.id
                   ? 'text-blue-600 border-blue-600'
-                  : 'text-gray-500 border-transparent hover:text-gray-700'
+                  : 'text-gray-500 dark:text-gray-400 border-transparent hover:text-gray-700 dark:text-gray-300'
               }`}
             >
               <tab.icon className="w-5 h-5" />
@@ -170,12 +187,12 @@ export default function SettingsPage() {
           {activeTab === 'company' && (
             <div className="space-y-6 animate-fadeIn">
               <div>
-                <h2 className="text-lg font-bold text-gray-800 mb-4">Informations de l'entreprise</h2>
-                <p className="text-gray-500 text-sm mb-6">Ces informations apparaîtront sur vos devis et factures</p>
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Informations de l'entreprise</h2>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">Ces informations apparaîtront sur vos devis et factures</p>
               </div>
 
               {/* Logo */}
-              <div className="flex items-center gap-6 p-4 bg-gray-50 rounded-xl">
+              <div className="flex items-center gap-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
                 <div className="relative">
                   {formData.logo_url ? (
                     <img 
@@ -191,7 +208,7 @@ export default function SettingsPage() {
                   <button
                     onClick={() => fileInputRef.current?.click()}
                     disabled={isUploadingLogo}
-                    className="absolute -bottom-2 -right-2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-blue-600 transition-colors"
+                    className="absolute -bottom-2 -right-2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors"
                   >
                     {isUploadingLogo ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -208,8 +225,8 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">Logo de l'entreprise</p>
-                  <p className="text-sm text-gray-500">JPG, PNG ou GIF. Max 2 Mo.</p>
+                  <p className="font-medium text-gray-800 dark:text-white">Logo de l'entreprise</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">JPG, PNG ou GIF. Max 2 Mo.</p>
                   <button
                     onClick={() => fileInputRef.current?.click()}
                     disabled={isUploadingLogo}
@@ -288,12 +305,12 @@ export default function SettingsPage() {
           {activeTab === 'billing' && (
             <div className="space-y-6 animate-fadeIn">
               <div>
-                <h2 className="text-lg font-bold text-gray-800 mb-4">Paramètres de facturation</h2>
-                <p className="text-gray-500 text-sm mb-6">Configurez vos paramètres de TVA</p>
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Paramètres de facturation</h2>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">Configurez vos paramètres de TVA</p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                   Êtes-vous assujetti à la TVA ?
                 </label>
                 <div className="grid grid-cols-2 gap-4">
@@ -302,24 +319,24 @@ export default function SettingsPage() {
                     onClick={() => setFormData(prev => ({ ...prev, is_vat_subject: true }))}
                     className={`p-4 rounded-xl border-2 transition-all text-left ${
                       formData.is_vat_subject
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
+                        : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
                     }`}
                   >
-                    <div className="font-semibold text-gray-800">Oui</div>
-                    <p className="text-sm text-gray-500">Je facture la TVA</p>
+                    <div className="font-semibold text-gray-800 dark:text-white">Oui</div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Je facture la TVA</p>
                   </button>
                   <button
                     type="button"
                     onClick={() => setFormData(prev => ({ ...prev, is_vat_subject: false }))}
                     className={`p-4 rounded-xl border-2 transition-all text-left ${
                       !formData.is_vat_subject
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
+                        : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
                     }`}
                   >
-                    <div className="font-semibold text-gray-800">Non</div>
-                    <p className="text-sm text-gray-500">Franchise en base de TVA</p>
+                    <div className="font-semibold text-gray-800 dark:text-white">Non</div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Franchise en base de TVA</p>
                   </button>
                 </div>
               </div>
@@ -332,15 +349,15 @@ export default function SettingsPage() {
                     value={formData.default_vat_rate.toString()}
                     onChange={(e) => setFormData(prev => ({ ...prev, default_vat_rate: parseFloat(e.target.value) }))}
                   />
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                     Ce taux sera appliqué par défaut lors de la création de nouveaux documents
                   </p>
                 </div>
               )}
 
               {!formData.is_vat_subject && (
-                <div className="p-4 bg-amber-50 rounded-xl border border-amber-200 animate-slideUp">
-                  <p className="text-sm text-amber-800">
+                <div className="p-4 bg-amber-50 dark:bg-amber-900/30 rounded-xl border border-amber-200 dark:border-amber-700 animate-slideUp">
+                  <p className="text-sm text-amber-800 dark:text-amber-200">
                     <strong>Mention obligatoire :</strong> "TVA non applicable, article 293 B du CGI" 
                     sera automatiquement ajoutée sur vos documents.
                   </p>
@@ -353,18 +370,18 @@ export default function SettingsPage() {
           {activeTab === 'legal' && (
             <div className="space-y-6 animate-fadeIn">
               <div>
-                <h2 className="text-lg font-bold text-gray-800 mb-4">Mentions légales</h2>
-                <p className="text-gray-500 text-sm mb-6">
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Mentions légales</h2>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
                   Ces mentions apparaîtront en bas de vos devis et factures
                 </p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Conditions de paiement et mentions légales
                 </label>
                 <textarea
-                  className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none"
+                  className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none"
                   rows={8}
                   placeholder="Ex: Conditions de règlement : paiement à 30 jours&#10;En cas de retard de paiement, une pénalité de 3 fois le taux d'intérêt légal sera appliquée..."
                   value={formData.legal_mentions}
@@ -372,9 +389,9 @@ export default function SettingsPage() {
                 />
               </div>
 
-              <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
-                <p className="text-sm text-blue-800 font-medium mb-2">📋 Mentions obligatoires à inclure :</p>
-                <ul className="text-sm text-blue-700 space-y-1">
+              <div className="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-xl border border-blue-200 dark:border-blue-800">
+                <p className="text-sm text-blue-800 dark:text-blue-200 font-medium mb-2">📋 Mentions obligatoires à inclure :</p>
+                <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
                   <li>• Conditions de règlement (délai de paiement)</li>
                   <li>• Taux de pénalités de retard</li>
                   <li>• Indemnité forfaitaire de recouvrement (40€)</li>
@@ -404,25 +421,25 @@ Pas d'escompte pour paiement anticipé.`
           {activeTab === 'emails' && (
             <div className="space-y-8 animate-fadeIn">
               <div>
-                <h2 className="text-lg font-bold text-gray-800 mb-4">Templates d'emails</h2>
-                <p className="text-gray-500 text-sm mb-6">
+                <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Templates d'emails</h2>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
                   Personnalisez les emails envoyés à vos clients avec vos devis et factures
                 </p>
               </div>
 
               {/* Variables disponibles */}
-              <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
-                <p className="text-sm text-blue-800 font-medium mb-2">📝 Variables disponibles :</p>
+              <div className="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-xl border border-blue-200 dark:border-blue-800">
+                <p className="text-sm text-blue-800 dark:text-blue-200 font-medium mb-2">📝 Variables disponibles :</p>
                 <div className="flex flex-wrap gap-2">
                   {['{{client_name}}', '{{document_number}}', '{{amount}}', '{{company_name}}', '{{company_email}}', '{{company_phone}}', '{{validity_date}}', '{{due_date}}'].map((variable) => (
-                    <code key={variable} className="px-2 py-1 bg-blue-100 rounded text-xs text-blue-800">{variable}</code>
+                    <code key={variable} className="px-2 py-1 bg-blue-100 dark:bg-blue-800 rounded text-xs text-blue-800 dark:text-blue-200">{variable}</code>
                   ))}
                 </div>
               </div>
 
               {/* Template Devis */}
-              <div className="space-y-4 p-6 bg-gray-50 rounded-xl">
-                <h3 className="font-bold text-gray-800 flex items-center gap-2">
+              <div className="space-y-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                <h3 className="font-bold text-gray-800 dark:text-white flex items-center gap-2">
                   <FileText className="w-5 h-5 text-blue-500" />
                   Template Devis
                 </h3>
@@ -435,11 +452,11 @@ Pas d'escompte pour paiement anticipé.`
                 />
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Corps de l'email
                   </label>
                   <textarea
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none font-mono text-sm"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none font-mono text-sm"
                     rows={10}
                     value={formData.email_quote_body}
                     onChange={(e) => setFormData(prev => ({ ...prev, email_quote_body: e.target.value }))}
@@ -459,8 +476,8 @@ Pas d'escompte pour paiement anticipé.`
               </div>
 
               {/* Template Facture */}
-              <div className="space-y-4 p-6 bg-gray-50 rounded-xl">
-                <h3 className="font-bold text-gray-800 flex items-center gap-2">
+              <div className="space-y-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                <h3 className="font-bold text-gray-800 dark:text-white flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-emerald-500" />
                   Template Facture
                 </h3>
@@ -473,11 +490,11 @@ Pas d'escompte pour paiement anticipé.`
                 />
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Corps de l'email
                   </label>
                   <textarea
-                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none font-mono text-sm"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 resize-none font-mono text-sm"
                     rows={10}
                     value={formData.email_invoice_body}
                     onChange={(e) => setFormData(prev => ({ ...prev, email_invoice_body: e.target.value }))}
@@ -494,6 +511,99 @@ Pas d'escompte pour paiement anticipé.`
                 >
                   Réinitialiser le template par défaut
                 </button>
+              </div>
+            </div>
+          )}
+
+          {/* Apparence */}
+          {activeTab === 'appearance' && (
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Thème de l'application</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                  Choisissez l'apparence de votre interface
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Mode Clair */}
+                <button
+                  onClick={() => handleThemeChange('light')}
+                  className={`p-6 rounded-2xl border-2 transition-all duration-200 text-left ${
+                    themeMode === 'light'
+                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
+                  }`}
+                >
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                    themeMode === 'light' ? 'bg-blue-500' : 'bg-gray-100 dark:bg-gray-700'
+                  }`}>
+                    <Sun className={`w-6 h-6 ${themeMode === 'light' ? 'text-white' : 'text-amber-500'}`} />
+                  </div>
+                  <h4 className="font-semibold text-gray-800 dark:text-white mb-1">Mode clair</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Interface lumineuse classique</p>
+                  {themeMode === 'light' && (
+                    <div className="mt-3 flex items-center gap-2 text-blue-600 text-sm font-medium">
+                      <Check className="w-4 h-4" />
+                      Actif
+                    </div>
+                  )}
+                </button>
+
+                {/* Mode Sombre */}
+                <button
+                  onClick={() => handleThemeChange('dark')}
+                  className={`p-6 rounded-2xl border-2 transition-all duration-200 text-left ${
+                    themeMode === 'dark'
+                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
+                  }`}
+                >
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                    themeMode === 'dark' ? 'bg-blue-500' : 'bg-gray-800'
+                  }`}>
+                    <Moon className={`w-6 h-6 ${themeMode === 'dark' ? 'text-white' : 'text-blue-400'}`} />
+                  </div>
+                  <h4 className="font-semibold text-gray-800 dark:text-white mb-1">Mode sombre</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Interface sombre pour le confort visuel</p>
+                  {themeMode === 'dark' && (
+                    <div className="mt-3 flex items-center gap-2 text-blue-600 text-sm font-medium">
+                      <Check className="w-4 h-4" />
+                      Actif
+                    </div>
+                  )}
+                </button>
+
+                {/* Mode Système */}
+                <button
+                  onClick={() => handleThemeChange('system')}
+                  className={`p-6 rounded-2xl border-2 transition-all duration-200 text-left ${
+                    themeMode === 'system'
+                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
+                  }`}
+                >
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                    themeMode === 'system' ? 'bg-blue-500' : 'bg-gradient-to-br from-amber-400 to-blue-500'
+                  }`}>
+                    <Monitor className={`w-6 h-6 text-white`} />
+                  </div>
+                  <h4 className="font-semibold text-gray-800 dark:text-white mb-1">Mode système</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Clair de 8h à 19h, sombre sinon</p>
+                  {themeMode === 'system' && (
+                    <div className="mt-3 flex items-center gap-2 text-blue-600 text-sm font-medium">
+                      <Check className="w-4 h-4" />
+                      Actif
+                    </div>
+                  )}
+                </button>
+              </div>
+
+              <div className="p-4 bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-xl">
+                <p className="text-sm text-amber-800 dark:text-amber-200">
+                  <strong>Mode système :</strong> L'application passe automatiquement en mode clair entre 8h et 19h, 
+                  et en mode sombre entre 19h et 8h.
+                </p>
               </div>
             </div>
           )}
