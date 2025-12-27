@@ -1,0 +1,9 @@
+<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- A avec sommet pointu comme un toit -->
+  
+  <!-- Le A -->
+  <path d="M40,8 L70,72 L57,72 L50,55 L30,55 L23,72 L10,72 Z" fill="#2563eb"/>
+  
+  <!-- Barre horizontale du A (trou triangulaire) -->
+  <path d="M40,22 L48,42 L32,42 Z" fill="white"/>
+</svg>
