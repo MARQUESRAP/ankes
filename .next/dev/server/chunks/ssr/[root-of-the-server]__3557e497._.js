@@ -2403,17 +2403,39 @@ const userService = {
         }
         return data;
     },
+    // Créer le profil utilisateur s'il n'existe pas
+    async ensureProfileExists () {
+        const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createClient"])();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error('Non authentifié');
+        // Vérifier si le profil existe
+        const { data: existingProfile } = await supabase.from('users').select('id').eq('id', user.id).single();
+        // Si le profil n'existe pas, le créer
+        if (!existingProfile) {
+            console.log('Création du profil pour:', user.id);
+            const { error } = await supabase.from('users').insert({
+                id: user.id,
+                email: user.email
+            });
+            if (error && error.code !== '23505') {
+                console.error('Erreur création profil:', error);
+                throw error;
+            }
+        }
+    },
     // Créer ou mettre à jour le profil
     async updateProfile (profile) {
         const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createClient"])();
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) throw new Error('Non authentifié');
         console.log('Update profile pour user:', user.id, profile);
-        const { data, error } = await supabase.from('users').upsert({
-            id: user.id,
+        // S'assurer que le profil existe d'abord
+        await this.ensureProfileExists();
+        // Maintenant faire l'update
+        const { data, error } = await supabase.from('users').update({
             email: profile.email || user.email,
             ...profile
-        }).select().single();
+        }).eq('id', user.id).select().single();
         if (error) {
             console.error('Erreur updateProfile:', error);
             throw error;
@@ -2432,6 +2454,8 @@ const userService = {
         const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createClient"])();
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) throw new Error('Non authentifié');
+        // S'assurer que le profil existe
+        await this.ensureProfileExists();
         const { data, error } = await supabase.from('users').update({
             legal_mentions: mentions
         }).eq('id', user.id).select().single();
@@ -2446,6 +2470,8 @@ const userService = {
         const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createClient"])();
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) throw new Error('Non authentifié');
+        // S'assurer que le profil existe
+        await this.ensureProfileExists();
         const fileExt = logoFile.name.split('.').pop();
         const fileName = `${user.id}/logo-${Date.now()}.${fileExt}`;
         console.log('Upload logo:', fileName);

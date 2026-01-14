@@ -2,12 +2,9 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/clients/page": "app/clients/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/history/page": "app/history/page.js",
-  "/invoices/new/page": "app/invoices/new/page.js",
-  "/invoices/page": "app/invoices/page.js",
   "/login/page": "app/login/page.js",
-  "/page": "app/page.js",
-  "/quotes/new/page": "app/quotes/new/page.js",
+  "/onboarding/page": "app/onboarding/page.js",
   "/quotes/page": "app/quotes/page.js",
-  "/settings/page": "app/settings/page.js"
+  "/settings/page": "app/settings/page.js",
+  "/signup/page": "app/signup/page.js"
 }

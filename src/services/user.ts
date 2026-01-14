@@ -21,6 +21,36 @@ export const userService = {
     return data;
   },
 
+  // Créer le profil utilisateur s'il n'existe pas
+  async ensureProfileExists(): Promise<void> {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Non authentifié');
+
+    // Vérifier si le profil existe
+    const { data: existingProfile } = await supabase
+      .from('users')
+      .select('id')
+      .eq('id', user.id)
+      .single();
+
+    // Si le profil n'existe pas, le créer
+    if (!existingProfile) {
+      console.log('Création du profil pour:', user.id);
+      const { error } = await supabase
+        .from('users')
+        .insert({
+          id: user.id,
+          email: user.email,
+        });
+
+      if (error && error.code !== '23505') { // Ignorer l'erreur de doublon
+        console.error('Erreur création profil:', error);
+        throw error;
+      }
+    }
+  },
+
   // Créer ou mettre à jour le profil
   async updateProfile(profile: Partial<OnboardingForm & { logo_url?: string; legal_mentions?: string; email?: string }>): Promise<User> {
     const supabase = createClient();
@@ -29,13 +59,17 @@ export const userService = {
 
     console.log('Update profile pour user:', user.id, profile);
 
+    // S'assurer que le profil existe d'abord
+    await this.ensureProfileExists();
+
+    // Maintenant faire l'update
     const { data, error } = await supabase
       .from('users')
-      .upsert({
-        id: user.id,
+      .update({
         email: profile.email || user.email,
         ...profile,
       })
+      .eq('id', user.id)
       .select()
       .single();
 
@@ -61,6 +95,9 @@ export const userService = {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Non authentifié');
 
+    // S'assurer que le profil existe
+    await this.ensureProfileExists();
+
     const { data, error } = await supabase
       .from('users')
       .update({ legal_mentions: mentions })
@@ -80,6 +117,9 @@ export const userService = {
     const supabase = createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Non authentifié');
+
+    // S'assurer que le profil existe
+    await this.ensureProfileExists();
 
     const fileExt = logoFile.name.split('.').pop();
     const fileName = `${user.id}/logo-${Date.now()}.${fileExt}`;
