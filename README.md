@@ -1,65 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚡ Ankès
 
-## Getting Started
+**Créez vos devis et factures en quelques clics.**
 
-First, run the development server:
+Ankès est une application web moderne et intuitive conçue pour les freelances, artisans et petites entreprises qui souhaitent gérer leur facturation simplement, sans prise de tête.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Supabase](https://img.shields.io/badge/Supabase-Database-green?logo=supabase)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?logo=tailwind-css)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 À propos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ankès est né d'un constat simple : la plupart des outils de facturation sont soit trop complexes, soit trop chers pour les indépendants et les petites structures.
 
-## Learn More
+Ce projet a été lancé par **deux amis** passionnés de tech et d'entrepreneuriat, avec l'objectif de créer un outil qui va à l'essentiel : créer des devis, les convertir en factures, et suivre son chiffre d'affaires.
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Fonctionnalités
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 📝 **Création de devis** - Créez des devis professionnels en quelques minutes
+- 📄 **Génération de factures** - Convertissez vos devis acceptés en factures d'un clic
+- 👥 **Gestion des clients** - Base de données clients avec historique complet
+- 📊 **Dashboard** - Visualisez votre CA, devis en attente et factures impayées
+- 📧 **Envoi par email** - Envoyez vos documents directement à vos clients
+- 📱 **PWA** - Installez l'app sur votre téléphone comme une application native
+- 🌙 **Mode sombre** - Interface adaptée pour le confort visuel
+- 🇫🇷 **100% français** - Conforme aux obligations légales françaises (TVA, mentions obligatoires)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Stack technique
 
-## Deploy on Vercel
+| Technologie | Usage |
+|-------------|-------|
+| **Next.js 14** | Framework React avec App Router |
+| **TypeScript** | Typage statique |
+| **Supabase** | Base de données PostgreSQL + Auth + Storage |
+| **Tailwind CSS** | Styling |
+| **React-PDF** | Génération de PDF |
+| **Resend** | Envoi d'emails |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📱 Installation sur mobile (PWA)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-```
+Ankès est une Progressive Web App ! Vous pouvez l'installer sur votre téléphone :
 
-2. **Configurer Supabase**
+**Sur iPhone (Safari) :**
+1. Ouvrez l'application dans Safari
+2. Appuyez sur l'icône Partager
+3. Sélectionnez "Sur l'écran d'accueil"
 
-- Créez un projet sur [supabase.com](https://supabase.com)
-- Copiez l'URL et la clé anon depuis Settings > API
-- Créez le fichier `.env.local` avec vos clés
+**Sur Android (Chrome) :**
+1. Ouvrez l'application dans Chrome
+2. Appuyez sur les 3 points en haut à droite
+3. Sélectionnez "Installer l'application"
 
-3. **Créer les tables**
+## 📸 Aperçu
 
-- Allez dans l'éditeur SQL de Supabase
-- Exécutez le script `supabase-schema.sql`
+| Dashboard | Création de devis | Gestion clients |
+|-----------|-------------------|-----------------|
+| Vue d'ensemble de votre activité | Interface intuitive de création | Historique complet par client |
 
-4. **Lancer l'application**
-```bash
-npm run dev
-```
+## 🤝 Contribution
 
-## 🎨 Stack technique
+Les contributions sont les bienvenues ! N'hésitez pas à :
 
-- **Framework** : Next.js 14 (App Router)
-- **Styling** : Tailwind CSS
-- **Base de données** : Supabase (PostgreSQL)
-- **Authentification** : Supabase Auth
-- **Icônes** : Lucide React
+1. Fork le projet
+2. Créer une branche (`git checkout -b feature/ma-fonctionnalite`)
+3. Commit vos changements (`git commit -m 'Ajout de ma fonctionnalité'`)
+4. Push sur la branche (`git push origin feature/ma-fonctionnalite`)
+5. Ouvrir une Pull Request
 
 ## 📄 Licence
 
-MIT - Créé avec ❤️ pour les artisans
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 💬 Contact
+
+Une question ? Une suggestion ? N'hésitez pas à ouvrir une issue ou à nous contacter.
+
+---
+
+<p align="center">
+  Fait avec ❤️ par deux amis qui en avaient marre des usines à gaz
+</p>
